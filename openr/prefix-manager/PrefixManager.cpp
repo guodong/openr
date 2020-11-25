@@ -11,7 +11,7 @@
 #include <folly/futures/Future.h>
 #include <thrift/lib/cpp2/protocol/Serializer.h>
 #if FOLLY_USE_SYMBOLIZER
-#include <folly/experimental/exception_tracer/ExceptionTracer.h>
+//#include <folly/experimental/exception_tracer/ExceptionTracer.h>
 #endif
 
 #include <openr/common/Constants.h>
@@ -127,10 +127,10 @@ PrefixManager::PrefixManager(
           } catch (const std::exception&) {
 #if FOLLY_USE_SYMBOLIZER
             // collect stack strace then fail the process
-            for (auto& exInfo :
-                 folly::exception_tracer::getCurrentExceptions()) {
-              LOG(ERROR) << exInfo;
-            }
+//             for (auto& exInfo :
+//                  folly::exception_tracer::getCurrentExceptions()) {
+//               LOG(ERROR) << exInfo;
+//             }
 #endif
             throw;
           }
