@@ -20,7 +20,7 @@
 #include <folly/String.h>
 #include <folly/futures/Future.h>
 #if FOLLY_USE_SYMBOLIZER
-#include <folly/experimental/exception_tracer/ExceptionTracer.h>
+//#include <folly/experimental/exception_tracer/ExceptionTracer.h>
 #endif
 
 #include <openr/common/Constants.h>
@@ -1440,9 +1440,9 @@ Decision::Decision(
       } catch (const std::exception& e) {
 #if FOLLY_USE_SYMBOLIZER
         // collect stack strace then fail the process
-        for (auto& exInfo : folly::exception_tracer::getCurrentExceptions()) {
-          LOG(ERROR) << exInfo;
-        }
+//         for (auto& exInfo : folly::exception_tracer::getCurrentExceptions()) {
+//           LOG(ERROR) << exInfo;
+//         }
 #endif
         // FATAL to produce core dump
         LOG(FATAL) << "Exception occured in Decision::processPublication - "
