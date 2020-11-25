@@ -59,7 +59,7 @@ namespace fs = std::experimental::filesystem;
 #include <openr/watchdog/Watchdog.h>
 
 #if FOLLY_USE_SYMBOLIZER
-#include <folly/experimental/exception_tracer/ExceptionTracer.h>
+//#include <folly/experimental/exception_tracer/ExceptionTracer.h>
 #endif
 
 using namespace openr;
@@ -214,9 +214,9 @@ main(int argc, char** argv) {
   } catch (const thrift::ConfigError&) {
 #if FOLLY_USE_SYMBOLIZER
     // collect stack strace then fail the process
-    for (auto& exInfo : folly::exception_tracer::getCurrentExceptions()) {
-      LOG(ERROR) << exInfo;
-    }
+//     for (auto& exInfo : folly::exception_tracer::getCurrentExceptions()) {
+//       LOG(ERROR) << exInfo;
+//     }
 #endif
     LOG(FATAL) << "Failed to start OpenR. Invalid configuration.";
   }
